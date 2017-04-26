@@ -4,8 +4,7 @@
   "description": "AngularJS directive ajax loading indicator.",
   "main": "angular-loading-spinner.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"index.html"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
