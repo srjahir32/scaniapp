@@ -1,0 +1,40 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()|| close()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="saveuploaddatamodule" class="form-floating" ng-submit="addtext(text)" required>
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}}</legend>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_File_Name' | translate }}</label>
+                        <input name="title" type="text" class="form-control" ng-model="text.filename" required>
+                        <span ng-show="saveuploaddatamodule.title.$touched && saveuploaddatamodule.title.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_File_Content' | translate }}</label>
+                        <textarea name="title1" rows="10" cols="60" class="form-control" ng-model="text.editor" required>
+                        </textarea>
+                        <span ng-show="saveuploaddatamodule.title1.$touched && saveuploaddatamodule.title1.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" ng-disabled="saveuploaddatamodule.text.$error.pattern || !text || saveuploaddatamodule.textarea.$error.patter  " class="btn btn-lg btn-primary">{{ 'Manules_Add_file' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+
+                    <div ng-show="aadtextloder">
+                        <div id="loading-txt-spinner" ng-class="{'loder-lang-chang': changelanguage=='PT-BR'}">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

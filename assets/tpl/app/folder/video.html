@@ -1,0 +1,115 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<section class="cards ng-scope">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-round-sm btn-link ng-scope"> <i class="md md-arrow-back icon-size" data-title="{{ 'Dashboard_Back' | translate }}" ng-click="backModules()" bs-tooltip></i><div class="ripple-wrapper"></div></button>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <section>
+                <div class="page-header">
+                    <h1 id="mh1">
+                        <i class="md md-view-module"></i> {{ 'Manules_Video' | translate }}
+                        <div ng-hide="loding">
+                            <div id="loading-bar-spinner">
+                                <div class="spinner-icon"></div>
+                            </div>
+                            <div id="loading-bar">
+                                <div class="bar">
+                                    <div class="peg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="uplodervid">
+                            <div id="loading-vid">
+                                <div class="bar">
+                                    <div class="peg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="deletevidloding">
+                            <div id="loading-bar-spinner">
+                                <div class="spinner-icon"></div>
+                            </div>
+                            <div id="loading-bar">
+                                <div class="bar">
+                                    <div class="peg"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </h1>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div ng:repeat="(key, item) in videodata">
+            <div class="col-md-4">
+                <md-card>
+
+                    <video html5-video='item.url' autoplay='true' controls='true'>
+                   </video>
+
+                    <md-card-actions layout="row" layout-align="start center">
+                        {{item.name}}
+                        <br> {{item.date | date:'MM/dd/yyyy'}}
+                        <div class="pull-right">
+
+                            <!--<div id="delebtn" type="button" class=" btn-flat" data-title="Delete item" ng-click="delete_video(item)" bs-tooltip>
+                                <i class="material-icons lg" bs-tooltip>delete</i>
+                            </div>-->
+                            <button id="delebtn" type="button" class="btn btn-lg btn-round btn-flat btn-default" data-title="{{'User_Delete_item'| translate}} " ng-click="delete_video(item)" bs-tooltip> 
+                                    <i class="material-icons lg">delete</i>
+                           </button>
+                        </div>
+                    </md-card-actions>
+                </md-card>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-buttons">
+        <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="{{ ' Scroll_to_top_tilte' | translate }}" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+        <div class="btn btn-primary btn-round btn-lg" ng-click="uploadVideo()" data-title="{{'New'| translate}} " bs-tooltip><i class="md md-add"></i></div>
+    </div>
+</section>

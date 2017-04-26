@@ -1,0 +1,140 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<section>
+    <div class="page-header">
+        <h1>
+            <i class="md md-settings"></i>{{ 'Setting_Setting' | translate }}
+        </h1>
+    </div>
+
+
+
+    <form name="myForm" ng-submit="changepassword(u_email)">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <p><strong>{{ 'Setting_Update_Your_Password' | translate }} </strong></p>
+                <p>{{changePasswordMsg}}</p>
+            </div>
+        </div>
+        <div class="row spacer">
+            <div class="col-md-3 ">
+                <div class="user-details-title">Email</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="fname" id="Full Name" ng-model="oldpassword" required>
+                    <p style="color:red;">{{ErrorOld}}</p>
+                    <span ng-show="myForm.fname.$touched && myForm.fname.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="user-details-title">{{ 'Setting_New_Password' | translate }}</div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pass" id="address" ng-model="newpassword" required>
+                    <p style="color:red;">{{ErrorNew}}</p>
+                    <span ng-show="myForm.pass.$touched && myForm.pass.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="user-details-title">{{ 'Setting_Confirm_Password' | translate }}</div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="confpass" name="confpass" ng-model="confpassword" required>
+                    <p style="color:red;">{{ErrorConf}}</p>
+                    <span ng-show="myForm.confpass.$touched && myForm.confpass.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><button type="submit" class="btn btn-primary">{{ 'Setting_SAVE_PASSWORD' | translate }}</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+
+<section class="col-md-6">
+    <div class="page-header">
+        <h1>
+            <i class="md md-settings"></i> {{ 'Dashboard_Edit_Profile' | translate }}
+        </h1>
+    </div>
+    <form class="form-floating" name="profile_form" ng-submit="EditCurrent_logedd_User()">
+        <fieldset>
+
+            <div ng-hide="true" class="form-group filled">
+                <label class="control-label">{{ 'User_Serial_Numner' | translate }}</label>
+                <input type="text" ng-model="user_id" class="form-control" ng-readonly="true">
+            </div>
+            <div class="form-group filled">
+                <label class="control-label">{{ 'User_Display_Name' | translate }}</label>
+                <input type="text" class="form-control" name="prof_name" ng-model="u_name" required>
+                <span ng-show="profile_form.prof_name.$touched && profile_form.prof_name.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+            </div>
+            <div class="form-group filled ">
+                <label class="">{{ 'User_User_Roles' | translate }}</label>
+                <select class="form-control" ng-model="u_type" required>
+                             <option value="0" disabled>-- {{ 'User_Select_User_Roles' | translate }} --</option>
+                             <option value="Administrator">{{ 'User_Administrator' | translate }}</option>
+                             <option value="Development">{{ 'User_Development' | translate }}</option>
+                             <option value="Support">{{ 'User_Support' | translate }}</option>
+                             <option value="Marketing">{{ 'User_Marketing' | translate }}</option>
+                       </select>
+
+            </div>
+            <div class="form-group filled">
+                <label class="control-label">{{ 'User_Email' | translate }}</label>
+                <input type="text" ng-model="u_email" class="form-control" required ng-readonly="true">
+                <p style="color:red;">{{Email_Error}}</p>
+            </div>
+            <div class="form-group filled">
+                <div class="btn btn-info" ng-multiple="false" id="file-upload" ngf-accept="'image/*'" ngf-select onchange="uploadDoneedit(this);" ng-model="pic">{{ 'User_Choose_Profile_Picture' | translate }}</div>
+                <p ng-show="imgfilter" style="color:red;">{{imagtypeerror}}</p> {{filenameedit}}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary">{{ 'Dashboard_Edit_Profile' | translate }}</button>
+            </div>
+            <div ng-show="edituserloder">
+                <div id="loading-user-spinner">
+                    <div class="spinner-icon"></div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+<div class="footer-buttons">
+    <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="{{ ' Scroll_to_top_tilte' | translate }}" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+</div>

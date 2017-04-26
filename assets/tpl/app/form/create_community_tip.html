@@ -1,0 +1,31 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="TipsForm" class="form-floating" novalidate="novalidate" ng-submit="Save_New_Tips(tips)" required>
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}}</legend>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ ' community_tip_Content' | translate }}</label>
+                        <textarea rows="8" class="form-control" name="tips" ng-model="tips" required>
+                        </textarea>
+                        <span ng-show="TipsForm.tips.$touched && TipsForm.tips.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{ ' Manules_add_tips' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+                    <div ng-show="addtip_loder">
+                        <div id="loading-txt-spinner" ng-class="{'loder-lang-chang-tip': changelanguage=='PT-BR'}">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

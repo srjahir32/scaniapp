@@ -1,0 +1,51 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form class="form-floating" novalidate="novalidate" ng-submit="CreateNewUser(item)">
+                <fieldset>
+                    <legend><span ng-bind-html="item.icon"></span> {{cmd}} {{settings.singular}}</legend>
+                    <div class="form-group filled">
+                        <label class="control-label">Display Name</label>
+                        <input type="text" class="form-control" ng-model="item.name" required>
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">Email</label>
+                        <input type="text" ng-model="item.email" class="form-control" required>
+                        <p style="color:red;">{{Email_Error}}</p>
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">Serial Numner</label>
+                        <input type="text" ng-model="serial_number" class="form-control" ng-readonly="true">
+                    </div>
+
+                    <div class="form-group filled" ng-show="ShowPassword">
+                        <label class="control-label">Password</label>
+                        <input type="password" ng-model="item.password" class="form-control" required>
+                        <p style="color:red;">{{Pass_Error}}</p>
+                    </div>
+
+                    <div class="form-group filled" ng-show="ShowPassword">
+                        <label class="control-label">Confirm Password</label>
+                        <input type="password" ng-model="item.confpassword" class="form-control" required>
+                        <p style="color:red;">{{ConPass_Error}}</p>
+                    </div>
+
+                    <div class="form-group filled">
+                        <label class="control-label">Profile Picture</label>
+                        <input type="text" ng-model="item.pic" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{UserButton}}</button>
+                        <button type="reset" class="btn btn-lg btn-primary">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

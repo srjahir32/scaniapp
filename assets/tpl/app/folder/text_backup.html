@@ -1,0 +1,93 @@
+<section class="cards ng-scope">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-lg btn-round btn-flat btn-default"> <i class="md md-arrow-back icon-size" data-title="Back" ng-click="backModules()" bs-tooltip></i><div class="ripple-wrapper"></div></button>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-view-module"></i> Text
+                        <div ng-show="textloder">
+                            <div id="loading-bar-spinner">
+                                <div class="spinner-icon"></div>
+                            </div>
+                            <div id="loading-bar">
+                                <div class="bar">
+                                    <div class="peg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </h1>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-full table-full-small table-dashboard-widget-1">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr ng-click="viewFolder(item)" ng:repeat="(key, item) in textData">
+                                <td class="col-md-1">
+                                    <i class="material-icons">description</i>
+                                </td>
+                                <td class="col-md-8">{{item.name}}.html</td>
+                                <td class="col-md-2">
+                                    {{item.date | date:'dd-M-yyyy H:mm:s'}}
+                                </td>
+                                <td class="col-md-1">
+                                    <!-- <button type="button" class="btn btn-link btn-round" data-animation="am-fade-and-slide-top" data-title="Delete item" data-template-url="assets/tpl/app/dialog.html" bs-modal="modal" ng-click="removeTextFile(item)" bs-tooltip> -->
+                                    <i class="material-icons" ng-click="removeTextFile(item)">delete</i>
+                                    <!--</button>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+
+            <div class="row">
+                <form class="form-floating" novalidate="novalidate" ng-submit="addtext(editor)">
+                    <h1>Display File Name</h1>
+                    <div class="form-group filled">
+                        <label class="control-label"> File Name</label>
+                        <input type="text" class="form-control" ng-model="textfilename" required>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <div style="margin: 20px">
+                                <h4>the editor's value:</h4>
+                                <div ng-model="editor">{{editor}}</div>
+                            </div>
+                            <div simditor ng-model="editor" placeholder="some placeholder"></div>
+                            <div class="btn-group">
+                                <button ng-click="clearEditor()">CLEAR</button>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-lg btn-primary">Add file</button>
+                            <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="footer-buttons">
+        <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="Scroll to top" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+        <div class="btn btn-primary btn-round btn-lg" ng-click="uploadtext()" ng-hide="true" bs-tooltip><i class="md md-add"></i></div>
+    </div>
+</section>

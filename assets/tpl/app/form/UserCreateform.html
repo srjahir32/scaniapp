@@ -1,0 +1,74 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide() || close()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="myForm" class="form-floating" ng-submit="CreateNewUser(item)">
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}} </legend>
+                    <div class="form-group filled" ng-hide="true">
+                        <label class="control-label">{{ 'User_Serial_Numner' | translate }}</label>
+                        <input type="text" ng-model="serial_number" class="form-control" ng-readonly="true" ng-disabled="true">
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'User_Display_Name' | translate }}</label>
+                        <input type="text" name="field1" class="form-control" ng-model="item.name" required>
+                        <span ng-show="myForm.field1.$touched && myForm.field1.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group filled ">
+                        <label class="">{{ 'User_User_Roles' | translate }}</label>
+                        <select class="form-control" name="field2" ng-model="item.roles" required>
+                             <option value="0" disabled>-- {{ 'User_Select_User_Roles' | translate }} --</option>
+                             <option value="Administrator">{{ 'User_Administrator' | translate }}</option>
+                             <option value="Development">{{ 'User_Development' | translate }}</option>
+                             <option value="Support">{{ 'User_Support' | translate }}</option>
+                             <option value="Marketing">{{ 'User_Marketing' | translate }}</option>
+                       </select>
+                        <span ng-show="myForm.field2.$touched && myForm.field2.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'User_Email' | translate }}</label>
+                        <input type="text" ng-model="item.email" name="email" class="form-control" required>
+                        <p ng-show="mailerr" style="color:red;">{{Email_Error}}</p>
+                        <span ng-show="myForm.email.$touched && myForm.email.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'User_Password' | translate }}</label>
+                        <input type="password" ng-model="item.password" name="field3" class="form-control" required>
+                        <p style="color:red;">{{Pass_Error}}</p>
+                        <span ng-show="myForm.field3.$touched && myForm.field3.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'User_Confirm_Password' | translate }}</label>
+                        <input type="password" ng-model="item.confpassword" name="field4" class="form-control" required>
+                        <p ng-hide="item.confpassword==item.password" style="color:red;">{{ConPass_Error}}</p>
+                        <span ng-show="myForm.field4.$touched && myForm.field4.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group filled">
+                        <div class="btn btn-info" ng-multiple="false" id="file-upload" ngf-select ngf-accept="'image/*'" onchange="uploadDone(this);" ng-model="item.pic">{{ 'User_Choose_Profile_Picture' | translate }}</div>
+                        <p ng-show="imgfilter" style="color:red;">{{imagtypeerror}}</p>
+                        {{filename}}
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{ 'User_Create_User' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()|| close()">{{ 'User_Cancel' | translate }}</button>
+                    </div>
+                    <div ng-show="edituserloder">
+                        <div id="loading-user-spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

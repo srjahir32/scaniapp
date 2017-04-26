@@ -1,0 +1,41 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="price_form" class="form-floating" ng-submit="Add_Price()">
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}} </legend>
+                    <div class="form-group filled" ng-hide="true">
+                        <label class="control-label">object_id</label>
+                        <input type="text" ng-model="cost_id" class="form-control" ng-readonly="true" ng-disabled="true">
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_Price' | translate }}</label>
+                        <input type="number" ng-model="cost" name="foldername" class="form-control" required>
+                        <span ng-show="price_form.foldername.$touched && price_form.foldername.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{ 'Manules_Add_Price' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+
+
+                    <div ng-show="edit_Price_loder">
+                        <div id="loading-pic-spinner" ng-class="{'loder-lang-chang-price': changelanguage=='PT-BR'}">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+
+
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

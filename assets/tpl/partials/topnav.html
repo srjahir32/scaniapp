@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default navbar-fixed-top" ng-class="{scroll: (scroll>10)}">
+    <div class="container-fluid">
+        <div class="navbar-header pull-left">
+            <button type="button" class="navbar-toggle pull-left m-15" data-activates=".sidebar">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+            <ul ng-show="search" class="nav navbar-nav navbar-right navbar-right-no-collapse ">
+                <li class="pull-right">
+                    <div>
+                        <!-- ngIf: showNavbarSearch -->
+                        <div class="mat-slide-right pull-right ">
+                            <form class="search-form form-inline ng-valid pull-left ng-pristine">
+                                <div class="form-group">
+                                    <label class="sr-only" for="search-input">{{ 'Dashboard_Search' | translate }}</label>
+                                    <!--<input type="text" id="search-input" ng-change="submitNavbarSearch(searchname)" ng-model="name" placeholder="{{ 'Dashboard_Search' | translate }}" autofocus="">-->
+                                    <input id="search-input" type="text"  ng-model="filter" ng-change="submitNavbarSearch()" class="form-control" placeholder="{{ 'Dashboard_Search' | translate }}" autofocus=""/>
+                                </div>
+                            </form>
+               
+                        </div>
+                        <!-- end ngIf: showNavbarSearch -->
+
+                        <div class="pull-right">
+                            <button class="btn btn-sm btn-link pull-left withoutripple">
+      <i class="md md-search f20"></i>
+    </button>
+                        </div>
+
+                    </div>
+                </li>
+
+
+            </ul>
+
+
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right navbar-right-no-collapse ">
+
+            <li class="dropdown pull-right ">
+                <button class="dropdown-toggle pointer btn btn-round-sm btn-link withoutripple " bs-dropdown="dropdown " data-template-url="assets/tpl/partials/top-right-menu.html " analytics-on="click " analytics-category="Themepicker
+                " analytics-event="Open ">
+                    <i class="md md-more-vert f20 "></i>
+                    </button>
+            </li>
+
+            <li class="dropdown language pull-right ">
+                <p class="languagetxt ">Language : </p>
+                <select class="languageselect " ng-options="language | translate for language in languages " ng-model="language " ng-change="updateLanguage(language) "></select>
+            </li>
+
+        </ul>
+    </div>
+</nav>

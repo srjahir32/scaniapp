@@ -1,0 +1,16 @@
+<div class="dropdown-menu dropdown-menu-right theme-picker mat-grow-top-right">
+
+    <div class="p-10" ng-click="$event.stopPropagation()">
+        <div class="pull-right m-r-10">
+            <button type="button" class="close" ng-click="$hide()">&times;</button>
+        </div>
+        <div class="row m-t-20">
+            <div class="col-md-6">
+                <a href="" ng-click="logout()" name="Logout" target="_self">
+                    <i class="md md-view-module"></i>
+                    <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Logout' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

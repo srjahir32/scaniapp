@@ -1,0 +1,41 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<section>
+    <div class="page-header">
+        <h1>
+            <i class="md md-new-releases"></i> Home
+        </h1>
+    </div>
+</section>

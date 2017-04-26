@@ -1,0 +1,38 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="edittext_file_form" class="form-floating" novalidate="novalidate" ng-submit="editcurrenttext()">
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}}</legend>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_File_Name' | translate }}</label>
+                        <input type="text" class="form-control" ng-model="htmlfile" required readonly>
+                    </div>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_File_Content' | translate }}</label>
+                        <textarea name="textdesc" rows="10" cols="60" class="form-control" ng-model="textdesc" required>
+                        </textarea>
+                        <span ng-show="edittext_file_form.textdesc.$touched && edittext_file_form.textdesc.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{ 'Manules_Save_file' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+                    <div ng-show="aadtextloder">
+                        <div id="loading-txt-spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

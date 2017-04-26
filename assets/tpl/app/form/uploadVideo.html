@@ -1,0 +1,34 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide() || close()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form name="saveuploaddatamodule" class="form-floating" novalidate="novalidate" ng-submit="addvideo(this)">
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}}</legend>
+
+                    <div class="form-group filled">
+                        <div class="btn btn-info" ng-multiple="false" id="file-upload" ngf-select onchange="uploadDone(this);" ngf-accept="'Video/*'" ng-model="video" required>{{ 'Manules_Choose_Video' | translate }}</div>
+                        <p ng-show="vidfilter" style="color:red;">{{vidtypeerror}}</p>
+                        <p>{{filename}}</p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" ng-disabled="saveuploaddatamodule.video.$error.pattern || !video " class="btn btn-lg btn-primary">{{ 'Manules_Upload_Video' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide() || close()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+                    <div ng-show="uplodervid">
+                        <div id="loading-vid-spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

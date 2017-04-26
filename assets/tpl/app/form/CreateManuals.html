@@ -1,0 +1,49 @@
+<div class="aside bs-docs-aside" tabindex="-1" role="dialog">
+    <div class="close">
+        <div class="btn btn-round btn-info" ng-click="$hide()"><i class="md md-close"></i></div>
+    </div>
+
+    <div class="aside-dialog">
+        <div class="aside-body bs-sidebar">
+
+            <form class="form_floating" name="manual_form" ng-submit="addManuals()">
+                <fieldset>
+                    <legend><i class="md md-dashboard cyan darken-2 icon-color"></i> {{Mtitle}}</legend>
+
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_Folder_Name' | translate }}</label>
+                        <input type="text" ng-model="foldername" name="foldername" class="form-control" required>
+                        <span ng-show="manual_form.foldername.$touched && manual_form.foldername.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_Select_folder' | translate }}</label>
+                        <select class="form-control" ng-model="folder" name="foder_cat" id="time" required>
+							<option value="quick_guide" selected="selected">{{ 'Manules_Quick_Guide' | translate }}</option>
+							<option value="technical_training">{{ 'Manules_Technical_Training' | translate }}</option>
+						</select>
+                        <span ng-show="manual_form.foder_cat.$touched && manual_form.foder_cat.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group filled">
+                        <label class="control-label">{{ 'Manules_Select_type_of_folder' | translate }}</label>
+                        <select class="form-control" ng-model="type" name="foder_type" id="time" required>
+							<option value="text" selected="selected">{{ 'Manules_Text' | translate }}</option>
+							<option value="photo">{{ 'Manules_Photos' | translate }}</option>
+							<option value="video" >{{ 'Manules_Video' | translate }}</option>
+							<option value="community_tips">{{ 'Manules_Special_content' | translate }}</option>
+                        </select>
+                        <span ng-show="manual_form.foder_type.$touched && manual_form.foder_type.$invalid" style="color:red;">{{ 'Required_error_message' | translate }}</span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">{{ 'Manules_Add_folder' | translate }}</button>
+                        <button type="reset" class="btn btn-lg btn-primary" ng-click="$hide()">{{ 'Manules_Cancel' | translate }}</button>
+                    </div>
+                    <div ng-show="edit_folder_loder">
+                        <div id="loading-pic-spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

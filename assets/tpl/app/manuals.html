@@ -1,0 +1,167 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-1" id="mh1">
+            <!-- <i class="md md-arrow-back icon-size" data-title="Back" ng-click="backModules()" bs-tooltip></i>-->
+            <button type="button" class="btn btn-round-sm btn-link ng-scope"> <i class="md md-arrow-back icon-size" data-title="{{ 'Dashboard_Back' | translate }}" ng-click="backModules()" bs-tooltip></i><div class="ripple-wrapper"></div></button>
+        </div>
+        <div class="col-md-10">
+            <div class="page-header text-left " id="mh2">
+                <h1>{{moulos_name}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-10">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-view-module"></i>{{ 'Manules_Quick_Guide' | translate }}
+                    </h1>
+                    <div ng-show="delete_folder_loder">
+                        <div id="loading-bar-spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                        <div id="loading-bar">
+                            <div class="bar">
+                                <div class="peg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="edit_folder_loder">
+                        <div id="loading-pic">
+                            <div class="bar">
+                                <div class="peg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="edit_Price_loder">
+                        <div id="loading-pic">
+                            <div class="bar">
+                                <div class="peg"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-full table-full-small table-dashboard-widget-1">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr ng:repeat="(key, item) in quick_guideData">
+                                <td ng-click="viewFolder(item)" class="col-md-2 f20 ng-binding"><i class="md md-folder indigo lighten-2 icon-color"></i></td>
+                                <td ng-click="viewFolder(item)" class="col-md-4">{{ item.name }}</td>
+                                <td ng-click="viewFolder(item)" class="col-md-2">{{ item.type }}</td>
+                                <td ng-click="viewFolder(item)" class="col-md-2">{{ item.updated | date:'dd-MM-yyyy' }}</td>
+                                <td class="col-md-2">
+                                    <i class="material-icons" data-title="{{ 'Manules_Edit_folder' | translate }}" id="edittext" ng-click="editFolder(item)" bs-tooltip>edit</i>
+                                    <i class="material-icons" data-title="{{ 'Manules_Delete_folder' | translate }}" ng-click="removeFolder(item)" bs-tooltip>delete</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-view-module"></i>{{ 'Manules_Technical_Training' | translate }}
+                    </h1>
+                </div>
+
+            </section>
+        </div>
+        <div class="col-md-2 text-right">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        {{ 'Manules_Price' | translate }}: <span class="price-color">{{cost_price}}</span> <img src="/assets/img/coins.png"></img>
+                    </h1>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-full table-full-small table-dashboard-widget-1">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr ng:repeat="(key, item) in technical_trainingData">
+                                <td ng-click="viewFolder(item)" class="col-md-2 f20 ng-binding"><i class="md md-folder indigo lighten-2 icon-color"></i></td>
+                                <td ng-click="viewFolder(item)" class="col-md-4">{{ item.name }}</td>
+                                <td ng-click="viewFolder(item)" class="col-md-2">{{ item.type }}</td>
+                                <td ng-click="viewFolder(item)" class="col-md-2">{{ item.updated | date:'dd-MM-yyyy' }}</td>
+                                <td class="col-md-2">
+                                    <i class="material-icons" data-title="{{ 'Manules_Edit_folder' | translate }}" id="edittext" ng-click="editFolder(item)" bs-tooltip>edit</i>
+                                    <i class="material-icons" data-title="{{ 'Manules_Delete_folder' | translate }}" ng-click="removeFolder(item)" bs-tooltip>delete</i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="footer-buttons">
+
+        <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="{{ ' Scroll_to_top_tilte' | translate }}" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+        <div ng-click=" Add_Price_open(current_modulos_id) " type="button " class="btn btn-sm btn-primary ">{{ 'Manules_Add_Price' | translate }}</div>
+        <div class="btn btn-primary btn-round btn-lg " ng-click="CreateManuals() " data-title="{{'New'| translate}} " bs-tooltip><i class="md md-add "></i></div>
+
+    </div>

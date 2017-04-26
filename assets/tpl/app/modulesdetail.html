@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"> <i class="md md-arrow-back icon-size" ng-click="backModules()"></i>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-view-module"></i> Quick Guide
+                    </h1>
+                </div>
+            </section>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-full table-full-small table-dashboard-widget-1">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr ng:repeat="(key, item) in quick_guideData">
+                                    <td class="col-md-2 f20 ng-binding"><i class="md md-folder indigo lighten-2 icon-color"></i></td>
+                                    <td class="col-md-8">{{ item.name }}</td>
+                                    <td class="col-md-2">{{ item.updated | date:'dd-MM-yyyy' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="page-header">
+                    <h1>
+                        <i class="md md-view-module"></i> Technical Training
+                    </h1>
+                </div>
+            </section>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-full table-full-small table-dashboard-widget-1">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr ng:repeat="(key, item) in technical_trainingData">
+                                    <td class="col-md-2 f20 ng-binding"><i class="md md-folder indigo lighten-2 icon-color"></i></td>
+                                    <td class="col-md-8">{{ item.name }}</td>
+                                    <td class="col-md-2">{{ item.updated | date:'dd-MM-yyyy' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="footer-buttons">
+    <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="Scroll to top" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+    <div class="btn btn-primary btn-round btn-lg" ng-click="CreateModule()" data-title="New {{settings.singular}}" bs-tooltip><i class="md md-add"></i></div>
+</div>

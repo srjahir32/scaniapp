@@ -1,0 +1,96 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<section>
+    <div class="page-header">
+        <h1>
+            <i class="md md-view-module"></i>{{ 'Manules_Modules' | translate }}
+        </h1>
+    </div>
+    <div ng-hide="loding">
+        <div id="loading-bar-spinner">
+            <div class="spinner-icon"></div>
+        </div>
+        <div id="loading-bar">
+            <div class="bar">
+                <div class="peg"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="col-md-12 ">
+    <div class="card ">
+        <div class="table-responsive ">
+            <!--template-pagination="assets/tpl/partials/data-table-pager.html "-->
+            <div class="table-responsive well no-padding white no-margin ">
+            <table ng-table="tableParams"template-pagination="assets/tpl/partials/data-table-pager.html " class="table table-full m-b-60 table-full-small " id="table-area-1 " fsm-big-data="data of data take 30 ">
+                <tr  ng:repeat="(key, item) in $data" ng-click="ViewModule(item) ">
+                    <td   data-title=" 'Manules_ID' | translate " sortable="'filter'">{{item.modulo_id}}</td>
+                    <td data-title=" 'Manules_NAME' | translate "sortable="'filter'">{{item.name}}</td>
+                    <td data-title=" 'Manules_DESCRIPTION' | translate "sortable="'filter'">{{item.desc}}</td>
+                </tr>
+            </table> 
+                <!--<table ng-table ="usersTable" show-filter=true  template-pagination="assets/tpl/partials/data-table-pager.html " class="table table-full m-b-60 table-full-small " id="table-area-1 " fsm-big-data="data of data take 30 ">
+                    <tbody>
+                        <tr ng:repeat="(key, item) in data | searchFor : search_modulos" ng-click="ViewModule(item) ">
+                            <td   data-title=" 'Manules_ID' | translate " sortable=" 'modulo_id' " filter="{ 'modulo_id': 'text' }">{{ item.modulo_id }}</td>
+                            <td data-title=" 'Manules_NAME' | translate " sortable=" 'name' "filter="{ 'name': 'text' }">{{ item.name }}</td>
+                            <td data-title=" 'Manules_DESCRIPTION' | translate " sortable=" 'desc' " filter="{ 'desc': 'text' }">{{ item.desc }}</td>
+                        </tr>
+                    </tbody>
+                </table>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<h2>AngularJS ng-table Filtering Example</h2>
+
+<table ng-table ="usersTable" show-filter=true class="table table-bordered table-striped">
+<tr ng-repeat="user in data">
+<td data-title=" 'Manules_ID' | translate " sortable="'modulo_id'" filter="{ 'modulo_id': 'text' }">{{user.modulo_id}}</td>
+<td data-title=" 'Manules_NAME' | translate " sortable="'name'" filter="{ 'name': 'text' }">{{user.name}}</td>
+<td data-title=" 'Manules_DESCRIPTION' | translate " sortable="'desc'" filter="{ 'desc': 'text' }">{{user.desc}}</td>
+</tr>
+</table>-->
+
+<div class="footer-buttons ">
+
+    <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer " scroll-to="top " ng-hide="scroll<100 " data-title="{{ ' Scroll_to_top_tilte' | translate }}" bs-tooltip><i class="md md-arrow-drop-up "></i></div>
+    <div ng-show={{permision}} ng-readonly="{{permision}} " class="btn btn-primary btn-round btn-lg " ng-click="SaveUploadDataModule() " data-title="{{'New'| translate}} " bs-tooltip><i class="md md-cloud-upload "></i></div>
+
+    <!--<span us-spinner="{radius:30, width:8, length: 16} "></span>-->
+
+</div>

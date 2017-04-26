@@ -1,0 +1,96 @@
+<aside class="sidebar fixed">
+    <div class="brand-logo">
+        <div id="logo">
+            <div class="sidebar-logo" style="font-size: 27px;"><b>{{ 'Dashboard_Scaniapp' | translate }}</b></div>
+        </div>
+    </div>
+    <div class="user-logged-in">
+        <div>
+
+        </div>
+        <div class="content">
+            <div class="user-name">{{admin_name}}
+                <div><span class="text-muted f9"></span></div>
+            </div>
+            <div class="user-email">{{admin_email}}</div>
+            <div class="user-actions">
+                <a class="m-r-5" href="#/setting">{{ 'Dashboard_Setting' | translate }}</a> <a href="" ng-click="logout()" target="_self">{{ 'Dashboard_Logout' | translate }}</a>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/" icon="md md-home" name="{{ 'Dashboard_Home' | translate }}" ng-click="close_side()">{{ 'Dashboard_Home' | translate }}</a>
+        <a menu-link href="#/users" icon="md md-account-circle" name="{{ 'Dashboard_Users' | translate }}" ng-click="close_side() ">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Users' | translate }}
+        </a>
+
+        <a menu-link href="#/modules" icon="md md-view-module" name="{{ 'Dashboard_Modules' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Modules' | translate }}
+        </a>
+        <a menu-link href="#/setting" icon="md md-settings" name="{{ 'Dashboard_Setting' | translate }}" ng-click="close_side()">
+            <span class="pull-right badge theme-primary-bg z-depth-0"></span>{{ 'Dashboard_Setting' | translate }}
+        </a>
+    </ul>
+</aside>
+<section>
+    <div class="page-header">
+        <h1>
+            <i class="md md-account-circle"></i>{{ 'User_Users' | translate }}
+
+            <div ng-hide="loding">
+                <div id="loading-bar-spinner">
+                    <div class="spinner-icon"></div>
+                </div>
+                <div id="loading-bar">
+                    <div class="bar">
+                        <div class="peg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="userdeleteloader">
+                <div id="loading-bar-spinner">
+                    <div class="spinner-icon"></div>
+                </div>
+                <div id="loading-bar">
+                    <div class="bar">
+                        <div class="peg"></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="edituserloder">
+                <div id="loading-user">
+                    <div class="bar">
+                        <div class="peg"></div>
+                    </div>
+                </div>
+            </div>
+        </h1>
+    </div>
+</section>
+<div>
+    <div class="card table-responsive ">
+        <div class="table-responsive well no-padding white no-margin">
+            <table ng-table="tableParams" class="table table-full m-b-60" template-pagination="assets/tpl/partials/data-table-pager.html" id="table-area-1" fsm-big-data="User of User take 30">
+                <tbody class="ng-scope">
+                    <tr ng:repeat="(key, item) in $data">
+                        <td data-title="'User_ID' | translate" sortable="'id'">{{ item.id }}</td>
+                        <td data-title="'User_Name' | translate" sortable="'name'">{{ item.name }}</td>
+                        <td data-title="'User_Email' | translate" sortable="'email'">{{ item.email }}</td>
+                        <td data-title="'User_Profile_Picture' | translate" sortable="'pic'"><img src="{{item.pic}}" style="width:50px;height:50px; border:none;border-radius:50%" /></td>
+                        <td data-title="'User_Roles' | translate" sortable="'id'">{{ item.utype }}</td>
+                        <td data-title="'Status' | translate" sortable="'id'">{{ item.userStatus }}</td>
+                        <td ng-show={{permision}} data-title="'User_Actions' | translate" ng-click="$event.stopPropagation()">
+                            <button ng-show={{permision}} type="button" class="btn btn-link btn-round" data-title="{{'User_Edit_User'| translate}}" ng-click="editUser(item)" bs-tooltip><i class="md md-edit"></i></button>
+                            <button ng-show={{permision}} type="button" class="btn btn-link btn-round" data-title="{{'User_Delete_User'| translate}}" ng-click="removeUser(item)" bs-tooltip><i class="md md-delete"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer-buttons">
+        <div class="btn btn-default btn-round btn-lg m-r-10 btn-footer" scroll-to="top" ng-hide="scroll<100" data-title="{{ ' Scroll_to_top_tilte' | translate }}" bs-tooltip><i class="md md-arrow-drop-up"></i></div>
+        <div ng-show={{permision}} class="btn btn-primary btn-round btn-lg " ng-click="CreateUser()" data-title="{{'New'| translate}}" bs-tooltip><i class=" md md-add "></i></div>
+    </div>
+</div>
