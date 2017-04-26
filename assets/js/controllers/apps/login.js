@@ -26,11 +26,11 @@ app.controller('myCtrl', ['$scope', '$window', '$http', function($scope, $window
 
 
     var userTokenIsValid = Backendless.UserService.isValidLogin();
-
     if (userTokenIsValid) {
-        $window.location.href = "home.html";
+        $window.location.href = "/home";
     } else {
         $scope.login = function() {
+            console.log('login');
 
             var email = this.email;
             var password = this.password;

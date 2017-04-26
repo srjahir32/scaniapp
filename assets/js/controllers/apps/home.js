@@ -3,43 +3,43 @@ app.config(['$routeProvider', function($routeProvider) {
 
     when('/', {
         controller: 'home',
-        templateUrl: 'assets/tpl/app/home.html'
+        templateUrl: '/assets/tpl/app/home.html'
     }).
     when('/users', {
         controller: 'userClt',
-        templateUrl: 'assets/tpl/app/users.html'
+        templateUrl: '/assets/tpl/app/users.html'
     }).
     when('/modules', {
         controller: 'modulesClt',
-        templateUrl: 'assets/tpl/app/modules.html'
+        templateUrl: '/assets/tpl/app/modules.html'
     }).
     when('/manuals', {
         controller: 'manualsClt',
-        templateUrl: 'assets/tpl/app/manuals.html'
+        templateUrl: '/assets/tpl/app/manuals.html'
     }).
     when('/text', {
         controller: 'folder',
-        templateUrl: 'assets/tpl/app/folder/text.html'
+        templateUrl: '/assets/tpl/app/folder/text.html'
     }).
     when('/photo', {
         controller: 'folder',
-        templateUrl: 'assets/tpl/app/folder/photo.html'
+        templateUrl: '/assets/tpl/app/folder/photo.html'
     }).
     when('/tips', {
         controller: 'folder',
-        templateUrl: 'assets/tpl/app/folder/tips.html'
+        templateUrl: '/assets/tpl/app/folder/tips.html'
     }).
     when('/video', {
         controller: 'folder',
-        templateUrl: 'assets/tpl/app/folder/video.html'
+        templateUrl: '/assets/tpl/app/folder/video.html'
     }).
     when('/delete', {
         controller: 'userClt',
-        templateUrl: 'assets/tpl/app/users.html'
+        templateUrl: '/assets/tpl/app/users.html'
     }).
     when('/setting', {
         controller: 'settingClt',
-        templateUrl: 'assets/tpl/app/settings.html'
+        templateUrl: '/assets/tpl/app/settings.html'
     }).
     otherwise({
         redirectTo: '/'
@@ -372,7 +372,7 @@ app.controller('home', ['$scope', '$window', '$aside', '$http', '$translate', 'n
 
                 if (loged_in_users.data.length == 0) {
                     Backendless.UserService.logout();
-                    $window.location.href = "index.html";
+                    $window.location.href = "/home";
                 }
                 $scope.u_pic = loged_in_users.data[0].profile_picture_url;
                 $scope.user_id = loged_in_users.data[0].objectId;
@@ -389,7 +389,7 @@ app.controller('home', ['$scope', '$window', '$aside', '$http', '$translate', 'n
 
             $scope.logout = function() {
                 Backendless.UserService.logout();
-                $window.location.href = "index.html";
+                $window.location.href = "/home";
 
             }
             submitNavbarSearch();
@@ -434,7 +434,7 @@ app.controller('home', ['$scope', '$window', '$aside', '$http', '$translate', 'n
 
         } else {
             Backendless.UserService.logout();
-            $window.location.href = "index.html";
+            $window.location.href = "/home";
         }
 
     }
@@ -883,7 +883,7 @@ app.controller('userClt', ['$scope', '$window', '$aside', '$http', 'ngTableParam
 
         } else {
             Backendless.UserService.logout();
-            $window.location.href = "index.html";
+            $window.location.href = "/home";
         }
     }
 

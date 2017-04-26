@@ -25,11 +25,16 @@ app.use(function (req, res, next) {
 });
 
 
-
-router.get('/',function(req,res){
+app.get('/',function(req,res){
 	  //res.header("Access-Control-Allow-Origin", "*");
 	  res.sendFile(__dirname+"/index.html");
 });
+
+app.get('/home',function(req,res){
+	  //res.header("Access-Control-Allow-Origin", "*");
+	  res.sendFile(__dirname+"/home.html");
+});
+
 
 app.use('/', router);
 app.use("/bower_components", express.static(__dirname + '/bower_components'));
@@ -50,4 +55,4 @@ app.use('/css',express.static(path.join(__dirname, 'app/assets/css')));
 
 
 app.listen(app.get('port'));
-console.log("VaboApi Started on Port No. ",app.get('port'));
+console.log(" Started on Port No. ",app.get('port'));
